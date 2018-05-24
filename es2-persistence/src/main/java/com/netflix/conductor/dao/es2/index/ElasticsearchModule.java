@@ -68,6 +68,6 @@ public class ElasticsearchModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
-		
+        bind(IndexDAO.class).to(ElasticSearchDAO.class);
 	}
 }

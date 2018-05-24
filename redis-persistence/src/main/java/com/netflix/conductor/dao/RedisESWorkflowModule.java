@@ -31,6 +31,10 @@ import redis.clients.jedis.JedisCommands;
 
 /**
  * @author Viren
+ * <p>
+ * ElasticSearch is no longer bound with Redis module. A better name would have been
+ * RedisWorkflowModule. But, to keep backward compatibility, this is left behind.
+ * </p>
  */
 public class RedisESWorkflowModule extends AbstractModule {
     private final Configuration config;
