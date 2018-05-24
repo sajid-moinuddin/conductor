@@ -38,8 +38,8 @@ import com.netflix.conductor.dao.dynomite.DynoProxy;
 import com.netflix.conductor.dao.dynomite.RedisExecutionDAO;
 import com.netflix.conductor.dao.dynomite.RedisMetadataDAO;
 import com.netflix.conductor.dao.dynomite.queue.DynoQueueDAO;
-import com.netflix.conductor.dao.index.ElasticSearchDAO;
-import com.netflix.conductor.dao.index.ElasticsearchModule;
+import com.netflix.conductor.dao.es5.index.ElasticSearchDAO;
+import com.netflix.conductor.dao.es5.index.ElasticsearchModule;
 import com.netflix.conductor.dao.mysql.MySQLWorkflowModule;
 import com.netflix.dyno.connectionpool.HostSupplier;
 import com.netflix.dyno.queues.redis.DynoShardSupplier;
@@ -92,7 +92,7 @@ public class ServerModule extends AbstractModule {
 		}
 
 		install(new ElasticsearchModule());
-		bind(IndexDAO.class).to(ElasticSearchDAO.class);
+		//bind(IndexDAO.class).to(ElasticSearchDAO.class);
 		
 		install(new CoreModule());
 		install(new JerseyModule());

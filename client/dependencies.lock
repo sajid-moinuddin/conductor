@@ -124,14 +124,12 @@
     },
     "findbugs": {
         "com.google.code.findbugs:findbugs": {
-            "locked": "3.0.1",
-            "requested": "3.0.1"
+            "locked": "3.0.1"
         }
     },
     "pmd": {
         "net.sourceforge.pmd:pmd-java": {
-            "locked": "5.6.1",
-            "requested": "5.6.1"
+            "locked": "5.6.1"
         }
     },
     "runtime": {

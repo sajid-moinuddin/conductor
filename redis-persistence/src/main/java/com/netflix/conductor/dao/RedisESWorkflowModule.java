@@ -22,7 +22,6 @@ import com.netflix.conductor.dao.dynomite.DynoProxy;
 import com.netflix.conductor.dao.dynomite.RedisExecutionDAO;
 import com.netflix.conductor.dao.dynomite.RedisMetadataDAO;
 import com.netflix.conductor.dao.dynomite.queue.DynoQueueDAO;
-import com.netflix.conductor.dao.index.ElasticSearchDAO;
 import com.netflix.dyno.connectionpool.HostSupplier;
 import com.netflix.dyno.queues.redis.DynoShardSupplier;
 
@@ -51,7 +50,6 @@ public class RedisESWorkflowModule extends AbstractModule {
         bind(MetadataDAO.class).to(RedisMetadataDAO.class);
         bind(ExecutionDAO.class).to(RedisExecutionDAO.class);
         bind(QueueDAO.class).to(DynoQueueDAO.class);
-        bind(IndexDAO.class).to(ElasticSearchDAO.class);
 
         bind(DynoQueueDAO.class).toInstance(createQueueDAO());
         bind(DynoProxy.class).toInstance(new DynoProxy(dynomiteConnection));

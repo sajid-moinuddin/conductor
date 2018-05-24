@@ -16,23 +16,20 @@
 /**
  * 
  */
-package com.netflix.conductor.dao.es5.index;
+package com.netflix.conductor.dao.es2.index;
 
-import java.net.InetAddress;
-
-import javax.inject.Singleton;
-
-import com.netflix.conductor.dao.IndexDAO;
+import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
+import com.netflix.conductor.core.config.Configuration;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.elasticsearch.transport.client.PreBuiltTransportClient;
-import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
-import com.netflix.conductor.core.config.Configuration;
+
+import javax.inject.Singleton;
+import java.net.InetAddress;
 
 
 /**
@@ -41,7 +38,7 @@ import com.netflix.conductor.core.config.Configuration;
  */
 public class ElasticsearchModule extends AbstractModule {
 
-	private static Logger log = LoggerFactory.getLogger(ElasticsearchModule.class);
+	private static Logger log = LoggerFactory.getLogger(ElasticSearchDAO.class);
 	
 	@Provides
 	@Singleton
@@ -51,10 +48,12 @@ public class ElasticsearchModule extends AbstractModule {
 		if(clusterAddress.equals("")) {
 			log.warn("workflow.elasticsearch.url is not set.  Indexing will remain DISABLED.");
 		}
-
-        Settings settings = Settings.builder().put("client.transport.ignore_cluster_name",true).put("client.transport.sniff", true).build();
-
-        TransportClient tc = new PreBuiltTransportClient(settings);
+		
+    	Settings.Builder settings = Settings.settingsBuilder();
+        settings.put("client.transport.ignore_cluster_name", true);
+        settings.put("client.transport.sniff", true);
+        
+        TransportClient tc = TransportClient.builder().settings(settings).build();
         String[] hosts = clusterAddress.split(",");
         for (String host : hosts) {
             String[] hostparts = host.split(":");
@@ -69,6 +68,6 @@ public class ElasticsearchModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
-        bind(IndexDAO.class).to(ElasticSearchDAO.class);
+		
 	}
 }
