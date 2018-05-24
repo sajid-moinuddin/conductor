@@ -26,7 +26,7 @@ import com.netflix.conductor.contribs.json.JsonJqTransform;
 import com.netflix.conductor.core.config.Configuration;
 import com.netflix.conductor.core.config.CoreModule;
 import com.netflix.conductor.dao.RedisESWorkflowModule;
-import com.netflix.conductor.dao.es5.index.ElasticsearchModule;
+import com.netflix.conductor.dao.es.index.ElasticsearchModule;
 import com.netflix.conductor.dao.mysql.MySQLWorkflowModule;
 import com.netflix.dyno.connectionpool.HostSupplier;
 import redis.clients.jedis.JedisCommands;
