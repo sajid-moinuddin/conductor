@@ -81,7 +81,6 @@ public class ServerModule extends AbstractModule {
 		}
 
 		install(new ElasticsearchModule());
-		//bind(IndexDAO.class).to(ElasticSearchDAO.class);
 		
 		install(new CoreModule());
 		install(new JerseyModule());
