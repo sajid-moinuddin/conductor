@@ -26,8 +26,8 @@
             "requested": "1.8.7"
         },
         "com.netflix.spectator:spectator-api": {
-            "locked": "0.40.0",
-            "requested": "0.40.0"
+            "locked": "0.68.0",
+            "requested": "0.68.0"
         },
         "com.sun.jersey:jersey-client": {
             "locked": "1.19.4",
@@ -67,8 +67,8 @@
             "requested": "1.8.7"
         },
         "com.netflix.spectator:spectator-api": {
-            "locked": "0.40.0",
-            "requested": "0.40.0"
+            "locked": "0.68.0",
+            "requested": "0.68.0"
         },
         "com.sun.jersey:jersey-client": {
             "locked": "1.19.4",
@@ -108,8 +108,8 @@
             "requested": "1.8.7"
         },
         "com.netflix.spectator:spectator-api": {
-            "locked": "0.40.0",
-            "requested": "0.40.0"
+            "locked": "0.68.0",
+            "requested": "0.68.0"
         },
         "com.sun.jersey:jersey-client": {
             "locked": "1.19.4",
@@ -159,8 +159,8 @@
             "requested": "1.8.7"
         },
         "com.netflix.spectator:spectator-api": {
-            "locked": "0.40.0",
-            "requested": "0.40.0"
+            "locked": "0.68.0",
+            "requested": "0.68.0"
         },
         "com.sun.jersey:jersey-client": {
             "locked": "1.19.4",
@@ -200,8 +200,8 @@
             "requested": "1.8.7"
         },
         "com.netflix.spectator:spectator-api": {
-            "locked": "0.40.0",
-            "requested": "0.40.0"
+            "locked": "0.68.0",
+            "requested": "0.68.0"
         },
         "com.sun.jersey:jersey-client": {
             "locked": "1.19.4",
@@ -241,8 +241,8 @@
             "requested": "1.8.7"
         },
         "com.netflix.spectator:spectator-api": {
-            "locked": "0.40.0",
-            "requested": "0.40.0"
+            "locked": "0.68.0",
+            "requested": "0.68.0"
         },
         "com.sun.jersey:jersey-client": {
             "locked": "1.19.4",
@@ -294,8 +294,8 @@
             "requested": "1.8.7"
         },
         "com.netflix.spectator:spectator-api": {
-            "locked": "0.40.0",
-            "requested": "0.40.0"
+            "locked": "0.68.0",
+            "requested": "0.68.0"
         },
         "com.sun.jersey:jersey-client": {
             "locked": "1.19.4",
@@ -347,8 +347,8 @@
             "requested": "1.8.7"
         },
         "com.netflix.spectator:spectator-api": {
-            "locked": "0.40.0",
-            "requested": "0.40.0"
+            "locked": "0.68.0",
+            "requested": "0.68.0"
         },
         "com.sun.jersey:jersey-client": {
             "locked": "1.19.4",
@@ -400,8 +400,8 @@
             "requested": "1.8.7"
         },
         "com.netflix.spectator:spectator-api": {
-            "locked": "0.40.0",
-            "requested": "0.40.0"
+            "locked": "0.68.0",
+            "requested": "0.68.0"
         },
         "com.sun.jersey:jersey-client": {
             "locked": "1.19.4",
