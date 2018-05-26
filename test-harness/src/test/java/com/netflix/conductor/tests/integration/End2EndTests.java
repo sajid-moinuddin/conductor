@@ -68,8 +68,9 @@ public class End2EndTests {
 	
 	@BeforeClass
 	public static void setup() throws Exception {
-		
-		ConductorServer server = new ConductorServer(new ConductorConfig());
+
+		ConductorConfig conductorConfig = new ConductorConfig();
+		ConductorServer server = new ConductorServer(conductorConfig);
 		server.start(8080, false);
 		
 		tc = new TaskClient();
