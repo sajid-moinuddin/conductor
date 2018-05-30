@@ -27,6 +27,7 @@ import com.netflix.conductor.core.config.Configuration;
 import com.netflix.conductor.core.config.CoreModule;
 import com.netflix.conductor.dao.RedisESWorkflowModule;
 import com.netflix.conductor.dao.es.index.ElasticsearchModule;
+import com.netflix.conductor.dao.es5.index.ElasticsearchV5Module;
 import com.netflix.conductor.dao.mysql.MySQLWorkflowModule;
 import com.netflix.dyno.connectionpool.HostSupplier;
 import redis.clients.jedis.JedisCommands;
@@ -69,18 +70,23 @@ public class ServerModule extends AbstractModule {
 	
 	@Override
 	protected void configure() {
-		
+
 		configureExecutorService();
-		
+
 		bind(Configuration.class).toInstance(conductorConfig);
 
 		if (db == ConductorServer.DB.mysql) {
 			install(new MySQLWorkflowModule());
 		} else {
-		    install(new RedisESWorkflowModule(conductorConfig, dynoConn, hostSupplier));
+			install(new RedisESWorkflowModule(conductorConfig, dynoConn, hostSupplier));
 		}
 
-		install(new ElasticsearchModule());
+		if (conductorConfig.getElasticSearchVersion().startsWith("2")){
+			install(new ElasticsearchModule());
+		}
+		else {
+			install(new ElasticsearchV5Module());
+		}
 		
 		install(new CoreModule());
 		install(new JerseyModule());

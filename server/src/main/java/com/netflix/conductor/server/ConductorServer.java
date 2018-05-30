@@ -28,6 +28,7 @@ import java.util.Set;
 import javax.servlet.DispatcherType;
 import javax.ws.rs.core.MediaType;
 
+import com.netflix.conductor.dao.es.EmbeddedElasticSearch;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
@@ -40,7 +41,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Guice;
 import com.google.inject.servlet.GuiceFilter;
 import com.netflix.conductor.common.metadata.tasks.TaskDef;
-import com.netflix.conductor.dao.es.EmbeddedElasticSearch;
+import com.netflix.conductor.dao.es5.EmbeddedElasticSearchV5;
 import com.netflix.conductor.redis.utils.JedisMock;
 import com.netflix.dyno.connectionpool.Host;
 import com.netflix.dyno.connectionpool.Host.Status;
@@ -147,7 +148,12 @@ public class ConductorServer {
 		case memory:
 			jedis = new JedisMock();
 			try {
-				EmbeddedElasticSearch.start();
+				if (conductorConfig.getElasticSearchVersion().startsWith("2")){
+					EmbeddedElasticSearch.start();
+				}
+				else {
+					EmbeddedElasticSearchV5.start();
+				}
 				if(System.getProperty("workflow.elasticsearch.url") == null) {
 					System.setProperty("workflow.elasticsearch.url", "localhost:9300");
 				}

@@ -1,5 +1,9 @@
 {
     "compile": {
+        "com.amazonaws:aws-java-sdk-sqs": {
+            "locked": "1.11.338",
+            "requested": "latest.release"
+        },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
@@ -58,9 +62,17 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
+        "com.sun.jersey.contribs.jersey-oauth:oauth-client": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "com.sun.jersey.contribs.jersey-oauth:oauth-signature": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "io.nats:java-nats-streaming": {
+            "locked": "0.5.0",
+            "requested": "0.5.0"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
@@ -68,19 +80,23 @@
             ],
             "locked": "1.2.2"
         },
+        "io.swagger:swagger-jaxrs": {
+            "locked": "1.5.9",
+            "requested": "1.5.9"
+        },
+        "javax.ws.rs:jsr311-api": {
+            "locked": "1.1.1",
+            "requested": "1.1.1"
+        },
+        "net.thisptr:jackson-jq": {
+            "locked": "0.0.8",
+            "requested": "0.0.8"
+        },
         "org.apache.commons:commons-lang3": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
-            "locked": "3.0"
-        },
-        "org.apache.logging.log4j:log4j-api": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
-        },
-        "org.apache.logging.log4j:log4j-core": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
+            "locked": "3.2.1"
         },
         "org.slf4j:slf4j-api": {
             "firstLevelTransitive": [
@@ -90,11 +106,15 @@
         }
     },
     "compileClasspath": {
+        "com.amazonaws:aws-java-sdk-sqs": {
+            "locked": "1.11.338",
+            "requested": "latest.release"
+        },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
-            "locked": "2.8.1"
+            "locked": "2.7.5"
         },
         "com.fasterxml.jackson.core:jackson-databind": {
             "firstLevelTransitive": [
@@ -148,9 +168,17 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
+        "com.sun.jersey.contribs.jersey-oauth:oauth-client": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "com.sun.jersey.contribs.jersey-oauth:oauth-signature": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "io.nats:java-nats-streaming": {
+            "locked": "0.5.0",
+            "requested": "0.5.0"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
@@ -158,38 +186,36 @@
             ],
             "locked": "1.2.2"
         },
+        "io.swagger:swagger-jaxrs": {
+            "locked": "1.5.9",
+            "requested": "1.5.9"
+        },
+        "javax.ws.rs:jsr311-api": {
+            "locked": "1.1.1",
+            "requested": "1.1.1"
+        },
+        "net.thisptr:jackson-jq": {
+            "locked": "0.0.8",
+            "requested": "0.0.8"
+        },
         "org.apache.commons:commons-lang3": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
-            "locked": "3.0"
-        },
-        "org.apache.logging.log4j:log4j-api": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
-        },
-        "org.apache.logging.log4j:log4j-core": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
-        },
-        "org.elasticsearch:elasticsearch": {
-            "locked": "2.4.6",
-            "requested": "2.4.6"
+            "locked": "3.2.1"
         },
         "org.slf4j:slf4j-api": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-common"
             ],
             "locked": "1.7.25"
-        }
-    },
-    "compileOnly": {
-        "org.elasticsearch:elasticsearch": {
-            "locked": "2.4.6",
-            "requested": "2.4.6"
         }
     },
     "default": {
+        "com.amazonaws:aws-java-sdk-sqs": {
+            "locked": "1.11.338",
+            "requested": "latest.release"
+        },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
@@ -248,9 +274,17 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
+        "com.sun.jersey.contribs.jersey-oauth:oauth-client": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "com.sun.jersey.contribs.jersey-oauth:oauth-signature": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "io.nats:java-nats-streaming": {
+            "locked": "0.5.0",
+            "requested": "0.5.0"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
@@ -258,19 +292,23 @@
             ],
             "locked": "1.2.2"
         },
+        "io.swagger:swagger-jaxrs": {
+            "project": true,
+            "requested": "1.5.9"
+        },
+        "javax.ws.rs:jsr311-api": {
+            "project": true,
+            "requested": "1.1.1"
+        },
+        "net.thisptr:jackson-jq": {
+            "locked": "0.0.8",
+            "requested": "0.0.8"
+        },
         "org.apache.commons:commons-lang3": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
             "locked": "3.0"
-        },
-        "org.apache.logging.log4j:log4j-api": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
-        },
-        "org.apache.logging.log4j:log4j-core": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
         },
         "org.slf4j:slf4j-api": {
             "firstLevelTransitive": [
@@ -279,7 +317,21 @@
             "locked": "1.7.25"
         }
     },
+    "provided": {
+        "io.swagger:swagger-jaxrs": {
+            "locked": "1.5.9",
+            "requested": "1.5.9"
+        },
+        "javax.ws.rs:jsr311-api": {
+            "locked": "1.1.1",
+            "requested": "1.1.1"
+        }
+    },
     "runtime": {
+        "com.amazonaws:aws-java-sdk-sqs": {
+            "locked": "1.11.338",
+            "requested": "latest.release"
+        },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
@@ -338,9 +390,17 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
+        "com.sun.jersey.contribs.jersey-oauth:oauth-client": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "com.sun.jersey.contribs.jersey-oauth:oauth-signature": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "io.nats:java-nats-streaming": {
+            "locked": "0.5.0",
+            "requested": "0.5.0"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
@@ -348,19 +408,23 @@
             ],
             "locked": "1.2.2"
         },
+        "io.swagger:swagger-jaxrs": {
+            "locked": "1.5.9",
+            "requested": "1.5.9"
+        },
+        "javax.ws.rs:jsr311-api": {
+            "locked": "1.1.1",
+            "requested": "1.1.1"
+        },
+        "net.thisptr:jackson-jq": {
+            "locked": "0.0.8",
+            "requested": "0.0.8"
+        },
         "org.apache.commons:commons-lang3": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
-            "locked": "3.0"
-        },
-        "org.apache.logging.log4j:log4j-api": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
-        },
-        "org.apache.logging.log4j:log4j-core": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
+            "locked": "3.2.1"
         },
         "org.slf4j:slf4j-api": {
             "firstLevelTransitive": [
@@ -370,6 +434,10 @@
         }
     },
     "runtimeClasspath": {
+        "com.amazonaws:aws-java-sdk-sqs": {
+            "locked": "1.11.338",
+            "requested": "latest.release"
+        },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
@@ -428,9 +496,17 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
+        "com.sun.jersey.contribs.jersey-oauth:oauth-client": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "com.sun.jersey.contribs.jersey-oauth:oauth-signature": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "io.nats:java-nats-streaming": {
+            "locked": "0.5.0",
+            "requested": "0.5.0"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
@@ -438,19 +514,23 @@
             ],
             "locked": "1.2.2"
         },
+        "io.swagger:swagger-jaxrs": {
+            "locked": "1.5.9",
+            "requested": "1.5.9"
+        },
+        "javax.ws.rs:jsr311-api": {
+            "locked": "1.1.1",
+            "requested": "1.1.1"
+        },
+        "net.thisptr:jackson-jq": {
+            "locked": "0.0.8",
+            "requested": "0.0.8"
+        },
         "org.apache.commons:commons-lang3": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
-            "locked": "3.0"
-        },
-        "org.apache.logging.log4j:log4j-api": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
-        },
-        "org.apache.logging.log4j:log4j-core": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
+            "locked": "3.2.1"
         },
         "org.slf4j:slf4j-api": {
             "firstLevelTransitive": [
@@ -459,13 +539,11 @@
             "locked": "1.7.25"
         }
     },
-    "shadow": {
-        "org.elasticsearch:elasticsearch": {
-            "locked": "2.4.6",
-            "requested": "2.4.6"
-        }
-    },
     "testCompile": {
+        "com.amazonaws:aws-java-sdk-sqs": {
+            "locked": "1.11.338",
+            "requested": "latest.release"
+        },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
@@ -524,9 +602,17 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
+        "com.sun.jersey.contribs.jersey-oauth:oauth-client": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "com.sun.jersey.contribs.jersey-oauth:oauth-signature": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "io.nats:java-nats-streaming": {
+            "locked": "0.5.0",
+            "requested": "0.5.0"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
@@ -534,23 +620,35 @@
             ],
             "locked": "1.2.2"
         },
+        "io.swagger:swagger-jaxrs": {
+            "locked": "1.5.9",
+            "requested": "1.5.9"
+        },
+        "javax.ws.rs:jsr311-api": {
+            "locked": "1.1.1",
+            "requested": "1.1.1"
+        },
         "junit:junit-dep": {
             "locked": "4.10",
             "requested": "4.10"
+        },
+        "net.thisptr:jackson-jq": {
+            "locked": "0.0.8",
+            "requested": "0.0.8"
         },
         "org.apache.commons:commons-lang3": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
-            "locked": "3.0"
+            "locked": "3.2.1"
         },
-        "org.apache.logging.log4j:log4j-api": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
+        "org.eclipse.jetty:jetty-server": {
+            "locked": "9.3.9.v20160517",
+            "requested": "9.3.9.v20160517"
         },
-        "org.apache.logging.log4j:log4j-core": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
+        "org.eclipse.jetty:jetty-servlet": {
+            "locked": "9.3.9.v20160517",
+            "requested": "9.3.9.v20160517"
         },
         "org.mockito:mockito-all": {
             "locked": "1.10.0",
@@ -564,6 +662,10 @@
         }
     },
     "testCompileClasspath": {
+        "com.amazonaws:aws-java-sdk-sqs": {
+            "locked": "1.11.338",
+            "requested": "latest.release"
+        },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
@@ -622,9 +724,17 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
+        "com.sun.jersey.contribs.jersey-oauth:oauth-client": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "com.sun.jersey.contribs.jersey-oauth:oauth-signature": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "io.nats:java-nats-streaming": {
+            "locked": "0.5.0",
+            "requested": "0.5.0"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
@@ -632,23 +742,35 @@
             ],
             "locked": "1.2.2"
         },
+        "io.swagger:swagger-jaxrs": {
+            "locked": "1.5.9",
+            "requested": "1.5.9"
+        },
+        "javax.ws.rs:jsr311-api": {
+            "locked": "1.1.1",
+            "requested": "1.1.1"
+        },
         "junit:junit-dep": {
             "locked": "4.10",
             "requested": "4.10"
+        },
+        "net.thisptr:jackson-jq": {
+            "locked": "0.0.8",
+            "requested": "0.0.8"
         },
         "org.apache.commons:commons-lang3": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
-            "locked": "3.0"
+            "locked": "3.2.1"
         },
-        "org.apache.logging.log4j:log4j-api": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
+        "org.eclipse.jetty:jetty-server": {
+            "locked": "9.3.9.v20160517",
+            "requested": "9.3.9.v20160517"
         },
-        "org.apache.logging.log4j:log4j-core": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
+        "org.eclipse.jetty:jetty-servlet": {
+            "locked": "9.3.9.v20160517",
+            "requested": "9.3.9.v20160517"
         },
         "org.mockito:mockito-all": {
             "locked": "1.10.0",
@@ -662,11 +784,15 @@
         }
     },
     "testRuntime": {
+        "com.amazonaws:aws-java-sdk-sqs": {
+            "locked": "1.11.338",
+            "requested": "latest.release"
+        },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
-            "locked": "2.8.1"
+            "locked": "2.7.5"
         },
         "com.fasterxml.jackson.core:jackson-databind": {
             "firstLevelTransitive": [
@@ -720,9 +846,17 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
+        "com.sun.jersey.contribs.jersey-oauth:oauth-client": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "com.sun.jersey.contribs.jersey-oauth:oauth-signature": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "io.nats:java-nats-streaming": {
+            "locked": "0.5.0",
+            "requested": "0.5.0"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
@@ -730,27 +864,35 @@
             ],
             "locked": "1.2.2"
         },
+        "io.swagger:swagger-jaxrs": {
+            "locked": "1.5.9",
+            "requested": "1.5.9"
+        },
+        "javax.ws.rs:jsr311-api": {
+            "locked": "1.1.1",
+            "requested": "1.1.1"
+        },
         "junit:junit-dep": {
             "locked": "4.10",
             "requested": "4.10"
+        },
+        "net.thisptr:jackson-jq": {
+            "locked": "0.0.8",
+            "requested": "0.0.8"
         },
         "org.apache.commons:commons-lang3": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
-            "locked": "3.0"
+            "locked": "3.2.1"
         },
-        "org.apache.logging.log4j:log4j-api": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
+        "org.eclipse.jetty:jetty-server": {
+            "locked": "9.3.9.v20160517",
+            "requested": "9.3.9.v20160517"
         },
-        "org.apache.logging.log4j:log4j-core": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
-        },
-        "org.elasticsearch:elasticsearch": {
-            "locked": "2.4.6",
-            "requested": "2.4.6"
+        "org.eclipse.jetty:jetty-servlet": {
+            "locked": "9.3.9.v20160517",
+            "requested": "9.3.9.v20160517"
         },
         "org.mockito:mockito-all": {
             "locked": "1.10.0",
@@ -764,11 +906,15 @@
         }
     },
     "testRuntimeClasspath": {
+        "com.amazonaws:aws-java-sdk-sqs": {
+            "locked": "1.11.338",
+            "requested": "latest.release"
+        },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
-            "locked": "2.8.1"
+            "locked": "2.7.5"
         },
         "com.fasterxml.jackson.core:jackson-databind": {
             "firstLevelTransitive": [
@@ -822,9 +968,17 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
+        "com.sun.jersey.contribs.jersey-oauth:oauth-client": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "com.sun.jersey.contribs.jersey-oauth:oauth-signature": {
+            "locked": "1.19.4",
+            "requested": "1.19.4"
+        },
+        "io.nats:java-nats-streaming": {
+            "locked": "0.5.0",
+            "requested": "0.5.0"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
@@ -832,27 +986,35 @@
             ],
             "locked": "1.2.2"
         },
+        "io.swagger:swagger-jaxrs": {
+            "locked": "1.5.9",
+            "requested": "1.5.9"
+        },
+        "javax.ws.rs:jsr311-api": {
+            "locked": "1.1.1",
+            "requested": "1.1.1"
+        },
         "junit:junit-dep": {
             "locked": "4.10",
             "requested": "4.10"
+        },
+        "net.thisptr:jackson-jq": {
+            "locked": "0.0.8",
+            "requested": "0.0.8"
         },
         "org.apache.commons:commons-lang3": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
             ],
-            "locked": "3.0"
+            "locked": "3.2.1"
         },
-        "org.apache.logging.log4j:log4j-api": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
+        "org.eclipse.jetty:jetty-server": {
+            "locked": "9.3.9.v20160517",
+            "requested": "9.3.9.v20160517"
         },
-        "org.apache.logging.log4j:log4j-core": {
-            "locked": "2.9.1",
-            "requested": "2.9.1"
-        },
-        "org.elasticsearch:elasticsearch": {
-            "locked": "2.4.6",
-            "requested": "2.4.6"
+        "org.eclipse.jetty:jetty-servlet": {
+            "locked": "9.3.9.v20160517",
+            "requested": "9.3.9.v20160517"
         },
         "org.mockito:mockito-all": {
             "locked": "1.10.0",

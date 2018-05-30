@@ -93,6 +93,11 @@ public class ConductorConfig implements Configuration {
 		return getProperty("EC2_AVAILABILITY_ZONE", "us-east-1c");
 	}
 
+	//TODO @Override
+	public String getElasticSearchVersion() {
+		return getProperty("ELASTIC_SEARCH_VERSION", "2");
+	}
+
 	@Override
 	public int getIntProperty(String key, int defaultValue) {
 		String val = getProperty(key, Integer.toString(defaultValue));

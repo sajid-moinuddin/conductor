@@ -10,8 +10,9 @@ dependencies {
 	testCompile project(':conductor-redis-persistence').sourceSets.test.output
 	testCompile project(':conductor-client')
 	testCompile project(':conductor-server')
-	/*testCompile project(':conductor-es2-persistence')*/
-	testCompile "org.elasticsearch:elasticsearch:${revElasticSearch2}"
+	testCompile project(':conductor-es2-persistence')
+	testCompile project(':conductor-es5-persistence')
+//	testCompile "org.elasticsearch:elasticsearch:${revElasticSearch2}"
 	testCompile "org.eclipse.jetty:jetty-server:${revJetteyServer}"
 	testCompile "org.eclipse.jetty:jetty-servlet:${revJettyServlet}"
 	testCompile "org.rarefiedredis.redis:redis-java:${revRarefiedRedis}"
