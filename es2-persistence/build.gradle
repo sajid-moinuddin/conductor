@@ -1,5 +1,5 @@
 plugins {
-	id 'com.github.johnrengelman.shadow' version '1.2.3'
+	id 'com.github.johnrengelman.shadow' version '2.0.4'
 }
 
 configurations {
@@ -16,7 +16,7 @@ dependencies {
     compile "org.apache.logging.log4j:log4j-api:${revLog4jApi}"
     compile "org.apache.logging.log4j:log4j-core:${revLog4jCore}"
 
-    compile "commons-io:commons-io:${revCommonsIo}"
+    compileOnly "commons-io:commons-io:${revCommonsIo}"
 
     compileOnly "org.elasticsearch:elasticsearch:${revElasticSearch2}"
 }
@@ -25,11 +25,45 @@ dependencies {
 shadowJar {
     configurations = [project.configurations.shadow]
     classifier = null
+
     dependencies {
         // Relocate Guava and HTTP components because it's a real bear if we get downgraded or upgraded downstream, and dependency-lock unfortunately applies to every config
-        include(dependency("org.elasticsearch:elasticsearch:${revElasticSearch2}"))
+        // Transitive dependencies are included in shadowed Jar.
+        include(dependency({"org.elasticsearch:elasticsearch:${revElasticSearch2}"}))
+        // include("com.netflix.conductor.dao.*")
     }
-    relocate 'org.elasticsearch', 'conductor.org.elasticsearch'
+
+    // Service files are not included by default.
+    mergeServiceFiles {
+        include 'META-INF/services/*'
+        include 'META-INF/maven/*'
+    }
+
+    // While relocating elasticsearch and lucene would work for Conductor,
+    // ES2 still has other transitive dependencies, mostly older versions,
+    // which could cause ClassLoader issues for clients using Conductor.
+    // Its safe to relocate transitive dependencies as well.
+    // Though a for loop would have been better here, some of the groupIds are
+    // different from package names.
+    relocate ('org.elasticsearch', 'conductor.org.elasticsearch')
+    relocate ('org.apache.lucene', 'conductor.org.apache.lucene')
+    relocate ('com.spatial4j', 'conductor.com.spatial4j')
+    //  Package name different from groupId.
+    relocate ('com.google.common', 'conductor.com.google.common')
+    relocate ('com.carrotsearch', 'conductor.com.carrotsearch')
+    //  Package name different from groupId.
+    relocate ('org.joda', 'conductor.org.joda')
+    relocate ('com.fasterxml.jackson.core', 'conductor.com.fasterxml.jackson.core')
+    relocate ('com.fasterxml.jackson.dataformat', 'conductor.com.fasterxml.jackson.dataformat')
+    relocate ('org.yaml', 'conductor.org.yaml')
+    //  Package name different from groupId.
+    relocate ('org.jboss.netty', 'conductor.org.jboss.netty')
+    relocate ('com.ning', 'conductor.com.ning')
+    relocate ('com.tdunning', 'conductor.com.tdunning')
+    //  Package name different from groupId.
+    relocate ('org.apache.commons.cli', 'conductor.org.apache.commons.cli')
+    relocate ('com.twitter', 'conductor.com.twitter')
+    relocate ('org.HdrHistogram', 'conductor.org.HdrHistogram')
 }
 
 jar.enabled = false

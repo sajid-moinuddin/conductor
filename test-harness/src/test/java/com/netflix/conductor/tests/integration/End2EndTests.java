@@ -59,7 +59,7 @@ public class End2EndTests {
 		System.setProperty("workflow.elasticsearch.index.name", "conductor");
 		System.setProperty("workflow.namespace.prefix", "integration-test");
 		System.setProperty("db", "memory");
-		System.setProperty("ELASTIC_SEARCH_VERSION", "2");
+		System.setProperty("workflow.elasticsearch.version", "5");
 	}
 	
 	private static TaskClient tc;

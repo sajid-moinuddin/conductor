@@ -58,10 +58,6 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
-        },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
@@ -184,6 +180,10 @@
         }
     },
     "compileOnly": {
+        "commons-io:commons-io": {
+            "locked": "2.4",
+            "requested": "2.4"
+        },
         "org.elasticsearch:elasticsearch": {
             "locked": "2.4.6",
             "requested": "2.4.6"
@@ -247,10 +247,6 @@
                 "com.netflix.conductor:conductor-core"
             ],
             "locked": "0.68.0"
-        },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
@@ -338,10 +334,6 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
-        },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
@@ -428,10 +420,6 @@
             ],
             "locked": "0.68.0"
         },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
-        },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-core"
@@ -460,6 +448,10 @@
         }
     },
     "shadow": {
+        "commons-io:commons-io": {
+            "locked": "2.4",
+            "requested": "2.4"
+        },
         "org.elasticsearch:elasticsearch": {
             "locked": "2.4.6",
             "requested": "2.4.6"
@@ -523,10 +515,6 @@
                 "com.netflix.conductor:conductor-core"
             ],
             "locked": "0.68.0"
-        },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [
@@ -621,10 +609,6 @@
                 "com.netflix.conductor:conductor-core"
             ],
             "locked": "0.68.0"
-        },
-        "commons-io:commons-io": {
-            "locked": "2.4",
-            "requested": "2.4"
         },
         "io.reactivex:rxjava": {
             "firstLevelTransitive": [

@@ -4,7 +4,7 @@
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-contribs"
             ],
-            "locked": "1.11.338"
+            "locked": "1.11.339"
         },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
@@ -149,7 +149,6 @@
         },
         "commons-io:commons-io": {
             "firstLevelTransitive": [
-                "com.netflix.conductor:conductor-es2-persistence",
                 "com.netflix.conductor:conductor-es5-persistence",
                 "com.netflix.conductor:conductor-mysql-persistence"
             ],
@@ -272,7 +271,7 @@
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-contribs"
             ],
-            "locked": "1.11.338"
+            "locked": "1.11.339"
         },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
@@ -417,7 +416,6 @@
         },
         "commons-io:commons-io": {
             "firstLevelTransitive": [
-                "com.netflix.conductor:conductor-es2-persistence",
                 "com.netflix.conductor:conductor-es5-persistence",
                 "com.netflix.conductor:conductor-mysql-persistence"
             ],
@@ -540,7 +538,7 @@
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-contribs"
             ],
-            "locked": "1.11.338"
+            "locked": "1.11.339"
         },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
@@ -685,7 +683,6 @@
         },
         "commons-io:commons-io": {
             "firstLevelTransitive": [
-                "com.netflix.conductor:conductor-es2-persistence",
                 "com.netflix.conductor:conductor-es5-persistence",
                 "com.netflix.conductor:conductor-mysql-persistence"
             ],
@@ -808,7 +805,7 @@
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-contribs"
             ],
-            "locked": "1.11.338"
+            "locked": "1.11.339"
         },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
@@ -953,7 +950,6 @@
         },
         "commons-io:commons-io": {
             "firstLevelTransitive": [
-                "com.netflix.conductor:conductor-es2-persistence",
                 "com.netflix.conductor:conductor-es5-persistence",
                 "com.netflix.conductor:conductor-mysql-persistence"
             ],
@@ -1136,7 +1132,7 @@
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-contribs"
             ],
-            "locked": "1.11.338"
+            "locked": "1.11.339"
         },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
@@ -1281,7 +1277,6 @@
         },
         "commons-io:commons-io": {
             "firstLevelTransitive": [
-                "com.netflix.conductor:conductor-es2-persistence",
                 "com.netflix.conductor:conductor-es5-persistence",
                 "com.netflix.conductor:conductor-mysql-persistence"
             ],
@@ -1404,7 +1399,7 @@
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-contribs"
             ],
-            "locked": "1.11.338"
+            "locked": "1.11.339"
         },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
@@ -1549,7 +1544,6 @@
         },
         "commons-io:commons-io": {
             "firstLevelTransitive": [
-                "com.netflix.conductor:conductor-es2-persistence",
                 "com.netflix.conductor:conductor-es5-persistence",
                 "com.netflix.conductor:conductor-mysql-persistence"
             ],
@@ -1672,7 +1666,7 @@
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-contribs"
             ],
-            "locked": "1.11.338"
+            "locked": "1.11.339"
         },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
@@ -1817,7 +1811,6 @@
         },
         "commons-io:commons-io": {
             "firstLevelTransitive": [
-                "com.netflix.conductor:conductor-es2-persistence",
                 "com.netflix.conductor:conductor-es5-persistence",
                 "com.netflix.conductor:conductor-mysql-persistence"
             ],
@@ -1940,7 +1933,7 @@
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-contribs"
             ],
-            "locked": "1.11.338"
+            "locked": "1.11.339"
         },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
@@ -2085,7 +2078,6 @@
         },
         "commons-io:commons-io": {
             "firstLevelTransitive": [
-                "com.netflix.conductor:conductor-es2-persistence",
                 "com.netflix.conductor:conductor-es5-persistence",
                 "com.netflix.conductor:conductor-mysql-persistence"
             ],
@@ -2216,7 +2208,7 @@
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-contribs"
             ],
-            "locked": "1.11.338"
+            "locked": "1.11.339"
         },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
@@ -2361,7 +2353,6 @@
         },
         "commons-io:commons-io": {
             "firstLevelTransitive": [
-                "com.netflix.conductor:conductor-es2-persistence",
                 "com.netflix.conductor:conductor-es5-persistence",
                 "com.netflix.conductor:conductor-mysql-persistence"
             ],
@@ -2492,7 +2483,7 @@
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-contribs"
             ],
-            "locked": "1.11.338"
+            "locked": "1.11.339"
         },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
@@ -2637,7 +2628,6 @@
         },
         "commons-io:commons-io": {
             "firstLevelTransitive": [
-                "com.netflix.conductor:conductor-es2-persistence",
                 "com.netflix.conductor:conductor-es5-persistence",
                 "com.netflix.conductor:conductor-mysql-persistence"
             ],
@@ -2768,7 +2758,7 @@
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-contribs"
             ],
-            "locked": "1.11.338"
+            "locked": "1.11.339"
         },
         "com.fasterxml.jackson.core:jackson-core": {
             "firstLevelTransitive": [
@@ -2913,7 +2903,6 @@
         },
         "commons-io:commons-io": {
             "firstLevelTransitive": [
-                "com.netflix.conductor:conductor-es2-persistence",
                 "com.netflix.conductor:conductor-es5-persistence",
                 "com.netflix.conductor:conductor-mysql-persistence"
             ],
