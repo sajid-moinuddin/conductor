@@ -28,6 +28,12 @@ services:
 
   dynomite:
     image: v1r3n/dynomite
+    logging:
+      driver: "none"
 
   elasticsearch:
     image: elasticsearch:2.4
+    ports:
+      - 9200:9200
+      - 9300:9300
+
