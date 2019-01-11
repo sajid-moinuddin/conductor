@@ -37,6 +37,10 @@ import com.netflix.conductor.dao.IndexDAO;
 public class MockIndexDAO implements IndexDAO {
 
 	@Override
+	public void setup() {
+	}
+
+	@Override
 	public void indexWorkflow(Workflow workflow) {
 	}
 
@@ -117,6 +121,16 @@ public class MockIndexDAO implements IndexDAO {
 	
 	@Override
 	public List<TaskExecLog> getTaskExecutionLogs(String taskId) {
+		return null;
+	}
+
+	@Override
+	public List<String> searchArchivableWorkflows(String indexName, long archiveTtlDays) {
+		return null;
+	}
+
+	@Override
+	public List<String> searchRecentRunningWorkflows(int lastModifiedHoursAgoFrom, int lastModifiedHoursAgoTo) {
 		return null;
 	}
 }

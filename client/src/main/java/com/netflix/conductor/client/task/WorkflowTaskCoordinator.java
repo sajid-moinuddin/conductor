@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2016 Netflix, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,6 @@ import com.netflix.conductor.common.metadata.tasks.Task;
 import com.netflix.conductor.common.metadata.tasks.TaskResult;
 import com.netflix.conductor.common.utils.RetryUtil;
 import com.netflix.discovery.EurekaClient;
-import com.netflix.servo.monitor.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,15 +32,18 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static com.netflix.conductor.client.task.WorkflowTaskMetrics.getPollTimer;
+import static com.netflix.conductor.client.task.WorkflowTaskMetrics.incrementTaskPollCount;
 
 /**
  * Manages the Task workers thread pool and server communication (poll, task update and acknowledgement).
@@ -77,6 +79,8 @@ public class WorkflowTaskCoordinator {
 	private static final String DOMAIN = "domain";
 
 	private static final String ALL_WORKERS = "all";
+
+	private static final long SHUTDOWN_WAIT_TIME_IN_SEC = 10;
 
 	/**
 	 * @param eurekaClient Eureka client - used to identify if the server is in discovery or not.  When the server goes out of discovery, the polling is terminated. If passed null, discovery check is not done.
@@ -269,6 +273,29 @@ public class WorkflowTaskCoordinator {
 		});
 	}
 
+	public void shutdown() {
+		this.scheduledExecutorService.shutdown();
+		this.executorService.shutdown();
+
+		shutdownExecutorService(this.scheduledExecutorService, SHUTDOWN_WAIT_TIME_IN_SEC);
+		shutdownExecutorService(this.executorService, SHUTDOWN_WAIT_TIME_IN_SEC);
+	}
+
+	private void shutdownExecutorService(ExecutorService executorService, long timeout) {
+		try {
+			if (executorService.awaitTermination(timeout, TimeUnit.SECONDS)) {
+				logger.debug("tasks completed, shutting down");
+			} else {
+				logger.warn(String.format("forcing shutdown after waiting for %s second", timeout));
+				executorService.shutdownNow();
+			}
+		} catch (InterruptedException ie) {
+			logger.warn("shutdown interrupted, invoking shutdownNow");
+			executorService.shutdownNow();
+			Thread.currentThread().interrupt();
+		}
+	}
+
 	private void pollForTask(Worker worker) {
 		if(eurekaClient != null && !eurekaClient.getInstanceRemoteStatus().equals(InstanceStatus.UP)) {
 			logger.debug("Instance is NOT UP in discovery - will not poll");
@@ -276,15 +303,14 @@ public class WorkflowTaskCoordinator {
 		}
 
 		if(worker.paused()) {
-			WorkflowTaskMetrics.taskPausedCounter(worker.getTaskDefName());
+			WorkflowTaskMetrics.incrementTaskPausedCount(worker.getTaskDefName());
 			logger.debug("Worker {} has been paused. Not polling anymore!", worker.getClass());
 			return;
 		}
 
-		String domain = PropertyFactory.getString(worker.getTaskDefName(), DOMAIN, null);
-		if(domain == null){
-			domain = PropertyFactory.getString(ALL_WORKERS, DOMAIN, null);
-		}
+		String domain = Optional.ofNullable(PropertyFactory.getString(worker.getTaskDefName(), DOMAIN, null))
+				.orElse(PropertyFactory.getString(ALL_WORKERS, DOMAIN, null));
+
 		logger.debug("Polling {}, domain={}, count = {} timeout = {} ms", worker.getTaskDefName(), domain, worker.getPollCount(), worker.getLongPollTimeoutInMS());
 
 		List<Task> tasks = Collections.emptyList();
@@ -296,12 +322,13 @@ public class WorkflowTaskCoordinator {
 				return;
             }
 			String taskType = worker.getTaskDefName();
-			Stopwatch sw = WorkflowTaskMetrics.startPollTimer(worker.getTaskDefName());
-			tasks = taskClient.batchPollTasksInDomain(taskType, domain, worker.getIdentity(), realPollCount, worker.getLongPollTimeoutInMS());
-			sw.stop();
-            logger.debug("Polled {}, domain {}, received {} tasks in worker - {}", worker.getTaskDefName(), domain, tasks.size(), worker.getIdentity());
+
+			tasks = getPollTimer(taskType)
+					.record(() -> taskClient.batchPollTasksInDomain(taskType, domain, worker.getIdentity(), realPollCount, worker.getLongPollTimeoutInMS()));
+			incrementTaskPollCount(taskType, tasks.size());
+			logger.debug("Polled {}, domain {}, received {} tasks in worker - {}", worker.getTaskDefName(), domain, tasks.size(), worker.getIdentity());
 		} catch (Exception e) {
-			WorkflowTaskMetrics.taskPollErrorCounter(worker.getTaskDefName(), e);
+			WorkflowTaskMetrics.incrementTaskPollErrorCount(worker.getTaskDefName(), e);
 			logger.error("Error when polling for tasks", e);
 		}
 
@@ -318,7 +345,7 @@ public class WorkflowTaskCoordinator {
 					}
 				});
 			} catch (RejectedExecutionException e) {
-				WorkflowTaskMetrics.taskExecutionQueueFullCounter(worker.getTaskDefName());
+				WorkflowTaskMetrics.incrementTaskExecutionQueueFullCount(worker.getTaskDefName());
 				logger.error("Execution queue is full, returning task: {}", task.getTaskId(), e);
 				returnTask(worker, task);
 			}
@@ -328,28 +355,24 @@ public class WorkflowTaskCoordinator {
 	private void execute(Worker worker, Task task) {
 		String taskType = task.getTaskDefName();
 		try {
-
 			if(!worker.preAck(task)) {
 				logger.debug("Worker decided not to ack the task {}, taskId = {}", taskType, task.getTaskId());
 				return;
 			}
 
 			if (!taskClient.ack(task.getTaskId(), worker.getIdentity())) {
-				WorkflowTaskMetrics.taskAckFailedCounter(worker.getTaskDefName());
-				logger.error("Ack failed for {}, taskId = {}", taskType, task.getTaskId());
-				returnTask(worker, task);
+				WorkflowTaskMetrics.incrementTaskAckFailedCount(worker.getTaskDefName());
 				return;
 			}
+			logger.debug("Ack successful for {}, taskId = {}", taskType, task.getTaskId());
 
 		} catch (Exception e) {
 			logger.error(String.format("ack exception for task %s, taskId = %s in worker - %s", task.getTaskDefName(), task.getTaskId(), worker.getIdentity()), e);
-			WorkflowTaskMetrics.taskAckErrorCounter(worker.getTaskDefName(), e);
-			returnTask(worker, task);
+			WorkflowTaskMetrics.incrementTaskAckErrorCount(worker.getTaskDefName(), e);
 			return;
 		}
 
-		Stopwatch sw = WorkflowTaskMetrics.startExecutionTimer(worker.getTaskDefName());
-
+		com.google.common.base.Stopwatch stopwatch = com.google.common.base.Stopwatch.createStarted();
 		TaskResult result = null;
 		try {
 			logger.debug("Executing task {} in worker {} at {}", task, worker.getClass().getSimpleName(), worker.getIdentity());
@@ -365,7 +388,10 @@ public class WorkflowTaskCoordinator {
 			}
 			handleException(e, result, worker, task);
 		} finally {
-			sw.stop();
+			stopwatch.stop();
+			WorkflowTaskMetrics.getExecutionTimer(worker.getTaskDefName())
+					.record(stopwatch.elapsed(TimeUnit.MILLISECONDS), TimeUnit.MILLISECONDS);
+
 		}
 
 		logger.debug("Task {} executed by worker {} at {} with status {}", task.getTaskId(), worker.getClass().getSimpleName(), worker.getIdentity(), task.getStatus());
@@ -419,19 +445,19 @@ public class WorkflowTaskCoordinator {
 			String methodName = "updateWithRetry";
             new RetryUtil<>().retryOnException(() ->
             {
-                taskClient.updateTask(result);
+                taskClient.updateTask(result, task.getTaskType());
                 return null;
             }, null, null, count, description, methodName);
 		} catch (Exception e) {
 			worker.onErrorUpdate(task);
-			WorkflowTaskMetrics.taskUpdateErrorCounter(worker.getTaskDefName(), e);
+			WorkflowTaskMetrics.incrementTaskUpdateErrorCount(worker.getTaskDefName(), e);
 			logger.error(String.format("Failed to update result: %s for task: %s in worker: %s", result.toString(), task.getTaskDefName(), worker.getIdentity()), e);
 		}
 	}
 
 	private void handleException(Throwable t, TaskResult result, Worker worker, Task task) {
 		logger.error(String.format("Error while executing task %s", task.toString()), t);
-		WorkflowTaskMetrics.taskExecutionErrorCounter(worker.getTaskDefName(), t);
+		WorkflowTaskMetrics.incrementTaskExecutionErrorCount(worker.getTaskDefName(), t);
 		result.setStatus(TaskResult.Status.FAILED);
 		result.setReasonForIncompletion("Error while executing the task: " + t);
 
